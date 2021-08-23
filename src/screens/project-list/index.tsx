@@ -15,7 +15,7 @@ export const ProjectListScreen = () => {
 
 	const [users, setUsers] = useState([]);
 
-	const debouncedParam = useDebounce(param, 2000);
+	const debouncedParam = useDebounce(param, 200);
 
 	const [list, setList] = useState([]);
 
@@ -35,6 +35,7 @@ export const ProjectListScreen = () => {
 		})
 	})
 
+    // @ts-ignore
     return <div>
 	    <SearchPanel param={param} setParam={setParam} users={users}/>
 	    <List users={users} list={list}/>
