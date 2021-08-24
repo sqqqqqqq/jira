@@ -11,6 +11,7 @@
     "@types/react": "^17.0.0",
     "@types/react-dom": "^17.0.0",
     "eslint-config-prettier": "^8.3.0",
+    "jira-dev-tool": "^1.7.61",
     "node": "^16.6.1",
     "qs": "^6.10.1",
     "react": "^17.0.2",
@@ -24,8 +25,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "prepare": "husky install",
-    "json-server": "json-server __json_server_mock__/db.json --watch --port 3001"
+    "prepare": "husky install"
   },
   "eslintConfig": {
     "extends": [
@@ -48,11 +48,15 @@
   },
   "devDependencies": {
     "@types/qs": "^6.9.7",
+    "husky": "^7.0.1",
     "json-server": "^0.16.3",
     "lint-staged": "^11.1.2",
     "prettier": "2.3.2"
   },
   "lint-staged": {
     "*.{js,css,md,ts,tsx eslint-config-prettier}": "prettier --write"
+  },
+  "msw": {
+    "workerDirectory": "public"
   }
 }
