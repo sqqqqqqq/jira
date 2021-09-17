@@ -1,14 +1,14 @@
-import { useEffect, useState } from "react";
+import {useEffect, useState} from "react";
 
 export const isFalsy = (value: unknown) => (value === 0 ? false : !value);
 
-export const cleanObject = (object: object) => {
-  const result = { ...object };
+export const isVoid = (value: unknown) => value === undefined || value === null || value === ''
+
+export const cleanObject = (object: { [ley: string]: unknown }) => {
+  const result = {...object};
   Object.keys(result).forEach((key) => {
-    // @ts-ignore
     const value = result[key];
-    if (isFalsy(value)) {
-      // @ts-ignore
+    if (isVoid(value)) {
       delete result[key];
     }
   });
@@ -17,7 +17,9 @@ export const cleanObject = (object: object) => {
 export const useMount = (callback: () => void) => {
   useEffect(() => {
     callback();
-  }, []); // eslint-disable-line react-hooks/exhaustive-deps
+    // callback加到依赖项里，会造成无限循环。
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 };
 
 //用泛型来规范类型
